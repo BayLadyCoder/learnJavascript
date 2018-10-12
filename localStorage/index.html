@@ -46,7 +46,11 @@ localStorage.removeItem();
     // Get Item
     siteName = localStorage.getItem('siteName');
 
+    // Use Item
     header.innerHTML = siteName;
+
+    // Remove Item
+    localStorage.removeItem('siteName');
 </script>
 
 </html>
