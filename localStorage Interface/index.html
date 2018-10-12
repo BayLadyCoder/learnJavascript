@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <title>Local Storage Interface</title>
     <style>
 
         body {
+            font-family: 'Roboto', sans-serif;
             display: flex;
             justify-content: center;
         }
@@ -32,9 +34,14 @@
         height: 14px;
         font-size: 18px;
     }
-    #btnInsert {
+    button {
         font-size: 17px;
         padding: 5px;
+    }
+
+    .btnRemove, #btnReset {
+        background-color: rgb(253, 84, 84);
+        color: #000;
     }
 
     #localStorageOutput {
@@ -59,6 +66,7 @@
             <input type="text" id="inputKey" placeholder="Enter Key...">
             <input type="text" id="inputValue" placeholder="Enter Value...">
             <button id="btnInsert">Insert Data</button>
+            <button id="btnReset">Reset Data</button>
         </fieldset>
 
         <fieldset>
@@ -69,6 +77,7 @@
                         <th>Index</th>
                         <th>Key</th>
                         <th>Value</th>
+                        <th><button style="display:none" class="btnRemove">X</button></th>
                     </tr>
                 </table>
             </div>
@@ -81,29 +90,48 @@
     const btnInsert = document.getElementById('btnInsert');
     const localStorageOutput = document.getElementById('localStorageOutput');
     const LSTable = document.getElementById('LSTable');
+    const btnRemove = document.getElementsByClassName('btnRemove');
+    const btnReset = document.getElementById('btnReset');
     // localStorage.clear();
 
     btnInsert.onclick = function () {
         const key = inputKey.value;
         const value = inputValue.value;
 
-        console.log(key);
-        console.log(value);
-
         if (key && value) {
             localStorage.setItem(key, value);
             location.reload(); // refresh the browser
         }
-        console.log(key);
-        console.log(value);
-    }
+
+    };
+
+    btnReset.onclick = function () {
+        localStorage.clear();
+        location.reload(); // refresh the browser
+    };
+
+    // const btnRemove = `<button id="${i}" class="btnRemove">Remove Data</button>`;
+
+
 
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         const value = localStorage.getItem(key);
 
-        LSTable.innerHTML += `<tr><td>${i}</td><td>${key}</td><td>${value}</td><tr>`;
+        LSTable.innerHTML +=
+            `<tr><td>${i}</td><td>${key}</td><td>${value}</td><td><button id="${i}" class="btnRemove" onClick="remove(this)">X</button></td><tr>`;
+
     }
+
+    function remove(e) {
+        const thisIndex = e.getAttribute('id');
+        console.log(e);
+        console.log(thisIndex);
+        const thisKey = localStorage.key(thisIndex)
+        console.log(thisKey);
+        localStorage.removeItem(thisKey);
+        location.reload(); // refresh the browser
+    };
 </script>
 
 </html>
