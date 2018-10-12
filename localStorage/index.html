@@ -22,7 +22,7 @@
 </style>
 
 <body>
-    <h1>Javascript and Local Storage</h1>
+    <h1 id="header">Javascript and Local Storage</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad iure, veritatis velit, sunt, consequuntur dolore
         adipisci ex eaque est deleniti dignissimos nam facilis sequi eveniet quae provident quod voluptate soluta aut!
         Tempora esse hic, voluptatem natus exercitationem reiciendis debitis. Ex quis dolor at nobis! Facere, quibusdam
@@ -37,9 +37,16 @@ localStorage.getItem();
 localStorage.removeItem();
 */
 
-    let siteName = 'My site';
+    let siteName = 'My Awesome Website';
+    let header = document.getElementById('header');
 
+    // Set Item
     localStorage.setItem('siteName', siteName);
+
+    // Get Item
+    siteName = localStorage.getItem('siteName');
+
+    header.innerHTML = siteName;
 </script>
 
 </html>
