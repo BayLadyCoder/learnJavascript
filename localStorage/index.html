@@ -82,6 +82,16 @@ localStorage.removeItem();
     let description = document.getElementById('description');
     header.innerHTML = localData.siteName;
     description.innerHTML = localData.siteDescription;
+
+    // Key(index) => returns key
+    localStorage.setItem("name", "Rachada");
+    localStorage.setItem("lastName", "Chairangsaris");
+    console.log(localStorage);
+
+    // Print keys in local storage
+    // .key(index) => returns key
+    for (let i = 0; i < localStorage.length; i++)
+        console.log(localStorage.key(i));
 </script>
 
 </html>
