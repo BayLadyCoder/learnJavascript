@@ -23,7 +23,8 @@
 
 <body>
     <h1 id="header">Javascript and Local Storage</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad iure, veritatis velit, sunt, consequuntur dolore
+    <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad iure, veritatis velit, sunt,
+        consequuntur dolore
         adipisci ex eaque est deleniti dignissimos nam facilis sequi eveniet quae provident quod voluptate soluta aut!
         Tempora esse hic, voluptatem natus exercitationem reiciendis debitis. Ex quis dolor at nobis! Facere, quibusdam
         deleniti. Sint, magnam id!</p>
@@ -51,6 +52,36 @@ localStorage.removeItem();
 
     // Remove Item
     localStorage.removeItem('siteName');
+
+
+    // Storing Multiple Data
+    // All data must be type String 
+    // in order to setItem in Local Storage
+    // So if you want to store multiple data you can use object
+    // then use JSON.stringify to translate data to JSON 
+    // so that it can be stored in Local Storage
+    let localData,
+        siteData = {
+            siteName: "I Love My Cats",
+            siteDescription: "My cats are super cute"
+        };
+
+    // translate data from object to JSON
+    localStorage.setItem('siteData', JSON.stringify(siteData));
+
+    // translate back to object after getItem to be ready to use
+    localData = JSON.parse(localStorage.getItem('siteData'));
+
+    // returns object
+    console.log(localData);
+
+    //returns JSON 
+    console.log(localStorage.getItem('siteData'));
+
+    // Use Item
+    let description = document.getElementById('description');
+    header.innerHTML = localData.siteName;
+    description.innerHTML = localData.siteDescription;
 </script>
 
 </html>
