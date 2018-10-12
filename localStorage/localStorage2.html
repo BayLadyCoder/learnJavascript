@@ -10,6 +10,10 @@
         #title {
             color: rgb(12, 147, 157);
         }
+
+        fieldset {
+            margin-bottom: 20px;
+        }
         legend {
             color: rgb(12, 147, 157);
             font-size: 20px;
@@ -18,6 +22,10 @@
         padding: 7px;
         height: 14px;
         font-size: 18px;
+    }
+    #btnInsert {
+        font-size: 17px;
+        padding: 5px;
     }
     </style>
 </head>
@@ -29,11 +37,17 @@
         <legend>Insert Data</legend>
         <input type="text" id="inputKey" placeholder="Enter Key...">
         <input type="text" id="inputValue" placeholder="Enter Value...">
+        <button id="btnInsert">Insert Data</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>Local Storage</legend>
+        <div id="lsOutput">
+
+        </div>
     </fieldset>
 
 </body>
-<script>
 
-</script>
 
 </html>
