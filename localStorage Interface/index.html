@@ -7,12 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Local Storage Interface</title>
     <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            width: 60%;
+        }
         #title {
             color: rgb(12, 147, 157);
         }
 
         fieldset {
             margin-bottom: 20px;
+            padding: 20px;
         }
         legend {
             color: rgb(12, 147, 157);
@@ -30,35 +39,48 @@
 
     #localStorageOutput {
         font-size: 20px;
-        line-height: 1.5;;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    border-collapse: collapse;
     }
     </style>
 </head>
 
 
 <body>
-    <h1 id="title">Local Storage - Javascript</h1>
-    <fieldset>
-        <legend>Insert Data</legend>
-        <input type="text" id="inputKey" placeholder="Enter Key...">
-        <input type="text" id="inputValue" placeholder="Enter Value...">
-        <button id="btnInsert">Insert Data</button>
-    </fieldset>
+    <div class="container">
+        <h1 id="title">Local Storage - Javascript</h1>
+        <fieldset>
+            <legend>Insert Data</legend>
+            <input type="text" id="inputKey" placeholder="Enter Key...">
+            <input type="text" id="inputValue" placeholder="Enter Value...">
+            <button id="btnInsert">Insert Data</button>
+        </fieldset>
 
-    <fieldset>
-        <legend>Local Storage</legend>
-        <div id="localStorageOutput">
-
-        </div>
-    </fieldset>
-
+        <fieldset>
+            <legend>Local Storage</legend>
+            <div id="localStorageOutput">
+                <table id="LSTable" style="width:100%">
+                    <tr id="LSTableHead">
+                        <th>Index</th>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </div>
 </body>
 <script>
     const inputKey = document.getElementById('inputKey');
     const inputValue = document.getElementById('inputValue');
     const btnInsert = document.getElementById('btnInsert');
     const localStorageOutput = document.getElementById('localStorageOutput');
-
+    const LSTable = document.getElementById('LSTable');
     // localStorage.clear();
 
     btnInsert.onclick = function () {
@@ -80,7 +102,7 @@
         const key = localStorage.key(i);
         const value = localStorage.getItem(key);
 
-        localStorageOutput.innerHTML += `${key}: ${value}<br />`;
+        LSTable.innerHTML += `<tr><td>${i}</td><td>${key}</td><td>${value}</td><tr>`;
     }
 </script>
 
